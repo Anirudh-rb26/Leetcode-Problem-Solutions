@@ -1,27 +1,28 @@
-class Solution {
-public:
-    string reverseWords(string s)
-    {
-        int start = 0, size = s.size();
-        vector<string> words;
-        
-        while(start < size)
+class Solution
+{
+    public:
+        string reverseWords(string s)
         {
-            string temp = "";
+            int start = 0, size = s.size();
+            vector<string> words;
             
-            while(start < size and s[start] == ' ') start++;
-            while(start < size and s[start] != ' ') temp += s[start++];
+            while(start < size)
+            {
+                string temp = "";
+                
+                while(start < size and s[start] == ' ') start++;
+                while(start < size and s[start] != ' ') temp += s[start++];
+                
+                if(temp == "" or temp == " ") continue;
+                
+                words.push_back(temp);
+            }
             
-            if (temp == "" || temp == " ") continue; // for safety if the condition result in true value.
+            string reversedString = words[0];
             
-            words.push_back(temp);
+            for(int word = 1; word < words.size(); word++)
+                reversedString = words[word] + " " + reversedString;
+            
+            return reversedString;
         }
-                            
-        string result = words[0];
-
-        for(int i = 1; i < words.size(); i++)
-            result = words[i] + " " + result;
-        
-        return result;
-    }
 };

@@ -20,7 +20,6 @@ public:
         int start = 0, end = str.size() - 1;
         
         while(start <= end)
-        {
             if(str[start] == str[end])
             {
                 start++;
@@ -28,7 +27,6 @@ public:
             }
             else
                 return isPalindrome(str, start + 1, end) or isPalindrome(str, start, end - 1);
-        }
         
         return true;
     }
